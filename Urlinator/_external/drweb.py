@@ -1,7 +1,6 @@
 import httpx
 import logging
 
-from bs4 import BeautifulSoup
 from lxml import html
 
 logging.basicConfig(level=logging.INFO)
@@ -41,7 +40,6 @@ class DrwebClient:
         html_content = data.get("text")
         tree = html.fromstring(html_content)
 
-        # Extract the required data
         site_clear = tree.xpath('//span[@class="site_clear"]/text()')[0]
         black_list = tree.xpath('//span[@class="black_list"]/text()')[0]
 
