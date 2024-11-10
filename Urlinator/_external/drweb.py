@@ -6,8 +6,6 @@ from lxml import html
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-logging.warning("DrWeb is slow, inaccurate and may throw unexpected errors due to lack of testing")
-
 class DrwebClient:
     def __init__(self, user_agent: str = "", timeouts: list = [30,30,30]):
         self.user_agent = user_agent
@@ -16,6 +14,7 @@ class DrwebClient:
         self.client = httpx.Client(timeout=self.timeout)
         self.cache = {}
         self.result = {}
+        logging.warning("DrWeb is slow, inaccurate and may throw unexpected errors due to lack of testing")
 
     def close_client(self) -> None:
         self.client.close()
